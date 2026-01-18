@@ -1,13 +1,26 @@
-import React, { StrictMode } from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { Host, Details, Members, Profile, Signin, UserDashboard, AddMember, MemberProfile, UpdateDetails, AuthLayout, Member, AboutUs, GetInTouch } from "./components";
-import { Provider } from 'react-redux';
-import store from './store/store.js';
-// import TestForOTP from './components/TestForOTP.jsx';
+import { StrictMode } from "react";
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import App from "./App.jsx";
+import {
+  AboutUs,
+  AddMember,
+  AuthLayout,
+  Details,
+  GetInTouch,
+  Host,
+  Member,
+  MemberProfile,
+  Members,
+  Profile,
+  Signin,
+  UpdateDetails,
+  UserDashboard,
+} from "./components";
+import store from "./store/store.js";
 
-const router = createBrowserRouter ([
+const router = createBrowserRouter([
   // {
   //   path: "/test-otp",
   //   element: (
@@ -16,15 +29,11 @@ const router = createBrowserRouter ([
   // },
   {
     path: "/about-us",
-    element: (
-      <AboutUs />
-    )
+    element: <AboutUs />,
   },
   {
     path: "/get-in-touch",
-    element: (
-      <GetInTouch />
-    )
+    element: <GetInTouch />,
   },
   {
     path: "/",
@@ -40,7 +49,7 @@ const router = createBrowserRouter ([
           <AuthLayout>
             <Signin />
           </AuthLayout>
-        )
+        ),
       },
       {
         path: "host",
@@ -56,13 +65,13 @@ const router = createBrowserRouter ([
             children: [
               {
                 path: "profile",
-                element: <Profile />
+                element: <Profile />,
               },
               {
                 path: "details/:of",
-                element: <Details />
+                element: <Details />,
               },
-            ]
+            ],
           },
           {
             path: "members",
@@ -70,19 +79,19 @@ const router = createBrowserRouter ([
             children: [
               {
                 path: "add-member",
-                element: <AddMember />
+                element: <AddMember />,
               },
-            ]
+            ],
           },
           {
             path: "update/:what",
-            element: <UpdateDetails />
+            element: <UpdateDetails />,
           },
-        ]
+        ],
       },
       {
         path: "member",
-        element: <Member/>,
+        element: <Member />,
         children: [
           {
             path: "dashboard",
@@ -90,15 +99,15 @@ const router = createBrowserRouter ([
             children: [
               {
                 path: "profile",
-                element: <Profile />
+                element: <Profile />,
               },
               {
                 path: "details/:of",
-                element: <Details />
+                element: <Details />,
               },
-            ]
+            ],
           },
-        ]
+        ],
       },
       {
         path: "/member-profile/:id",
@@ -114,24 +123,24 @@ const router = createBrowserRouter ([
             children: [
               {
                 path: "profile",
-                element: <Profile />
+                element: <Profile />,
               },
               {
                 path: "details/:of",
-                element: <Details />
+                element: <Details />,
               },
-            ]
+            ],
           },
-        ]
+        ],
       },
-    ]
-  }
-])
+    ],
+  },
+]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
       <RouterProvider router={router}></RouterProvider>
     </Provider>
   </StrictMode>,
-)
+);
